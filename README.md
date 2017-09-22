@@ -37,11 +37,11 @@ npm install vue-simple-progress --save
 
 ```js
 import Vue from 'vue'
-import Progress from 'vue-simple-progress'
+import ProgressBar from 'vue-simple-progress'
 
 new Vue({
   components: {
-    Progress
+    ProgressBar
   }
 })
 ```

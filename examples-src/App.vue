@@ -11,19 +11,21 @@
     <div class="flex-fill" style="padding-bottom: 10rem">
       <!-- allow a 3rem padding when resizing browser horizontally and approaching Tachyon's large media breakpoint (60em) -->
       <div class="mb5 center" style="max-width: 57rem">
-        <p>Add example progress bars here...</p>
+        <div class="pt5 nb5">
+          <p>Add example progress bars here...</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import Progress from '../src/components/Progress.vue'
+  import ProgressBar from '../src/components/Progress.vue'
 
   export default {
     name: 'app',
     components: {
-      Progress
+      ProgressBar
     },
     data() {
       return {
