@@ -11,8 +11,26 @@
     <div class="flex-fill" style="padding-bottom: 10rem">
       <!-- allow a 3rem padding when resizing browser horizontally and approaching Tachyon's large media breakpoint (60em) -->
       <div class="mb5 center" style="max-width: 57rem">
-        <div class="pt5 nb5">
-          <p>Add example progress bars here...</p>
+        <div class="pt5 nb5 mv5">
+          <progress-bar pct="0"></progress-bar>
+        </div>
+        <div class="pt5 nb5 mv5">
+          <progress-bar pct="10"></progress-bar>
+        </div>
+        <div class="pt5 nb5 mv5">
+          <progress-bar pct="25"></progress-bar>
+        </div>
+        <div class="pt5 nb5 mv5">
+          <progress-bar pct="50"></progress-bar>
+        </div>
+        <div class="pt5 nb5 mv5">
+          <progress-bar pct="75"></progress-bar>
+        </div>
+        <div class="pt5 nb5 mv5">
+          <progress-bar pct="90"></progress-bar>
+        </div>
+        <div class="pt5 nb5 mv5">
+          <progress-bar pct="100"></progress-bar>
         </div>
       </div>
     </div>

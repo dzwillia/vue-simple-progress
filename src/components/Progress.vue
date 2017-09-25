@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div class="vue-simple-progress-bar" :style="progress_style"></div>
-    <div class="vue-simple-progress-text" :style="text_style" v-if="message.length > 0">{{message}}</div>
+    <div class="vue-simple-progress" :style="progress_style">
+      <div class="vue-simple-progress-bar" :style="bar_style"></div>
+      <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0">{{text}}</div>
+    </div>
   </div>
 </template>
 
@@ -13,20 +15,19 @@
   export default {
     name: 'vue-simple-progress',
     props: {
+      'pct': {
+        default: 0
+      },
       'size': {
         // either a number (pixel width/height) or 'tiny', 'small',
         // 'medium', 'large', 'huge', 'massive' for common sizes
-        default: 32
+        default: 'tiny'
       },
-      'line-size': {
-        type: Number,
-        default: 3
-      },
-      'line-bg-color': {
+      'bg-color': {
         type: String,
         default: '#eee'
       },
-      'line-fg-color': {
+      'bar-color': {
         type: String,
         default: '#2196f3' // match .blue color to Material Design's 'Blue 500' color
       },
@@ -47,45 +48,16 @@
       size_px() {
         switch (this.size)
         {
-          case 'tiny':    return 12
-          case 'small':   return 16
-          case 'medium':  return 32
-          case 'large':   return 48
-          case 'big':     return 64
-          case 'huge':    return 96
-          case 'massive': return 128
+          case 'tiny':    return 2
+          case 'small':   return 4
+          case 'medium':  return 8
+          case 'large':   return 12
+          case 'big':     return 16
+          case 'huge':    return 32
+          case 'massive': return 64
         }
 
         return isNumber(this.size) ? this.size : 32
-      },
-      line_size_px() {
-        switch (this.size)
-        {
-          case 'tiny':    return 1
-          case 'small':   return 2
-          case 'medium':  return 3
-          case 'large':   return 3
-          case 'big':     return 4
-          case 'huge':    return 4
-          case 'massive': return 5
-        }
-
-        return isNumber(this.lineSize) ? this.lineSize : 4
-      },
-      text_margin_top() {
-        switch (this.size)
-        {
-          case 'tiny':
-          case 'small':
-          case 'medium':
-          case 'large':
-          case 'big':
-          case 'huge':
-          case 'massive':
-            return Math.min(Math.max(Math.ceil(this.size_px/8), 3), 12)
-        }
-
-        return isNumber(this.spacing) ? this.spacing : 4
       },
       text_font_size() {
         switch (this.size)
@@ -104,11 +76,13 @@
       },
       progress_style() {
         return {
-          'margin': '0 auto',
-          'border-radius': '100%',
-          'border': this.line_size_px+'px solid '+this.lineBgColor,
-          'border-top': this.line_size_px+'px solid '+this.lineFgColor,
-          'width': this.size_px+'%',
+          'background': this.bgColor
+        }
+      },
+      bar_style() {
+        return {
+          'background': this.barColor,
+          'width': this.pct+'%',
           'height': this.size_px+'px'
         }
       },
@@ -125,6 +99,6 @@
 
 <style>
   .vue-simple-progress-bar {
-    transition: all 0.3s linear;
+    transition: all 0.15s linear;
   }
 </style>
