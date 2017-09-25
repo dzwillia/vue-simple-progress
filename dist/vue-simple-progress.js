@@ -147,7 +147,7 @@ exports = module.exports = __webpack_require__(4)();
 
 
 // module
-exports.push([module.i, ".vue-simple-progress-bar{transition:all .3s linear}", ""]);
+exports.push([module.i, ".vue-simple-progress-bar{transition:all .15s linear}", ""]);
 
 // exports
 
@@ -538,18 +538,17 @@ var isNumber = function isNumber(n) {
 exports.default = {
   name: 'vue-simple-progress',
   props: {
+    'pct': {
+      default: 0
+    },
     'size': {
-      default: 32
+      default: 'tiny'
     },
-    'line-size': {
-      type: Number,
-      default: 3
-    },
-    'line-bg-color': {
+    'bg-color': {
       type: String,
       default: '#eee'
     },
-    'line-fg-color': {
+    'bar-color': {
       type: String,
       default: '#2196f3' },
     'text': {
@@ -569,56 +568,22 @@ exports.default = {
     size_px: function size_px() {
       switch (this.size) {
         case 'tiny':
-          return 12;
+          return 2;
         case 'small':
-          return 16;
+          return 4;
         case 'medium':
-          return 32;
+          return 8;
         case 'large':
-          return 48;
+          return 12;
         case 'big':
-          return 64;
+          return 16;
         case 'huge':
-          return 96;
+          return 32;
         case 'massive':
-          return 128;
+          return 64;
       }
 
       return isNumber(this.size) ? this.size : 32;
-    },
-    line_size_px: function line_size_px() {
-      switch (this.size) {
-        case 'tiny':
-          return 1;
-        case 'small':
-          return 2;
-        case 'medium':
-          return 3;
-        case 'large':
-          return 3;
-        case 'big':
-          return 4;
-        case 'huge':
-          return 4;
-        case 'massive':
-          return 5;
-      }
-
-      return isNumber(this.lineSize) ? this.lineSize : 4;
-    },
-    text_margin_top: function text_margin_top() {
-      switch (this.size) {
-        case 'tiny':
-        case 'small':
-        case 'medium':
-        case 'large':
-        case 'big':
-        case 'huge':
-        case 'massive':
-          return Math.min(Math.max(Math.ceil(this.size_px / 8), 3), 12);
-      }
-
-      return isNumber(this.spacing) ? this.spacing : 4;
     },
     text_font_size: function text_font_size() {
       switch (this.size) {
@@ -636,11 +601,13 @@ exports.default = {
     },
     progress_style: function progress_style() {
       return {
-        'margin': '0 auto',
-        'border-radius': '100%',
-        'border': this.line_size_px + 'px solid ' + this.lineBgColor,
-        'border-top': this.line_size_px + 'px solid ' + this.lineFgColor,
-        'width': this.size_px + '%',
+        'background': this.bgColor
+      };
+    },
+    bar_style: function bar_style() {
+      return {
+        'background': this.barColor,
+        'width': this.pct + '%',
         'height': this.size_px + 'px'
       };
     },
@@ -660,12 +627,15 @@ exports.default = {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('div', {
-    staticClass: "vue-simple-progress-bar",
+    staticClass: "vue-simple-progress",
     style: (_vm.progress_style)
-  }), _vm._v(" "), (_vm.message.length > 0) ? _c('div', {
+  }, [_c('div', {
+    staticClass: "vue-simple-progress-bar",
+    style: (_vm.bar_style)
+  }), _vm._v(" "), (_vm.text.length > 0) ? _c('div', {
     staticClass: "vue-simple-progress-text",
     style: (_vm.text_style)
-  }, [_vm._v(_vm._s(_vm.message))]) : _vm._e()])
+  }, [_vm._v(_vm._s(_vm.text))]) : _vm._e()])])
 },staticRenderFns: []}
 
 /***/ })
