@@ -21,7 +21,7 @@
       'size': {
         // either a number (pixel width/height) or 'tiny', 'small',
         // 'medium', 'large', 'huge', 'massive' for common sizes
-        default: 2
+        default: 3
       },
       'bg-color': {
         type: String,
