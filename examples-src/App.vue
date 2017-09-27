@@ -11,27 +11,57 @@
     <div class="flex-fill" style="padding-bottom: 10rem">
       <!-- allow a 3rem padding when resizing browser horizontally and approaching Tachyon's large media breakpoint (60em) -->
       <div class="mb5 center" style="max-width: 57rem">
-        <div class="pt5 nb5 mv5">
-          <progress-bar pct="0"></progress-bar>
+
+        <div class="pt5 nb5" id="basic-progress-bars">
+          <a href="#default-spinners" :class="header_cls">
+            <h2 class="ma0 pb2 f2 fw4 lh-1">Basic Progress Bars</h2>
+            <p class="ma0 lh-copy f6">Progress bars can be used with very little configuration.</p>
+          </a>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Basic progress bar</div>
+            <progress-bar pct="50"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Basic progress bar with text</div>
+            <progress-bar pct="50" text="50%"></progress-bar>
+          </div>
         </div>
-        <div class="pt5 nb5 mv5">
-          <progress-bar pct="10"></progress-bar>
+
+        <div class="pt5 nb5" id="standard-sizes">
+          <a href="#standard-sizes" :class="header_cls">
+            <h2 class="ma0 pb2 f2 fw4 lh-1">Standard Sizes</h2>
+            <p class="ma0 lh-copy f6">Progress bars come with some standard sizes which size both the bar element as well as the text.</p>
+          </a>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Tiny progress bar</div>
+            <progress-bar size="tiny" pct="10" text="10%"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Small progress bar</div>
+            <progress-bar size="small" pct="20" text="20%"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Medium progress bar</div>
+            <progress-bar size="medium" pct="40" text="40%"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Large progress bar</div>
+            <progress-bar size="large" pct="60" text="60%"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Big progress bar</div>
+            <progress-bar size="big" pct="80" text="80%"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Huge progress bar</div>
+            <progress-bar size="huge" pct="90" text="90%"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Massive progress bar</div>
+            <progress-bar size="massive" pct="100" text="100%"></progress-bar>
+          </div>
         </div>
-        <div class="pt5 nb5 mv5">
-          <progress-bar pct="25"></progress-bar>
-        </div>
-        <div class="pt5 nb5 mv5">
-          <progress-bar pct="50"></progress-bar>
-        </div>
-        <div class="pt5 nb5 mv5">
-          <progress-bar pct="75"></progress-bar>
-        </div>
-        <div class="pt5 nb5 mv5">
-          <progress-bar pct="90"></progress-bar>
-        </div>
-        <div class="pt5 nb5 mv5">
-          <progress-bar pct="100"></progress-bar>
-        </div>
+
       </div>
     </div>
   </div>

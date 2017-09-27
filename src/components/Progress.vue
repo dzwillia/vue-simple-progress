@@ -2,8 +2,8 @@
   <div>
     <div class="vue-simple-progress" :style="progress_style">
       <div class="vue-simple-progress-bar" :style="bar_style"></div>
-      <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0">{{text}}</div>
     </div>
+    <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0">{{text}}</div>
   </div>
 </template>
 
@@ -21,7 +21,7 @@
       'size': {
         // either a number (pixel width/height) or 'tiny', 'small',
         // 'medium', 'large', 'huge', 'massive' for common sizes
-        default: 'tiny'
+        default: 2
       },
       'bg-color': {
         type: String,
@@ -30,6 +30,10 @@
       'bar-color': {
         type: String,
         default: '#2196f3' // match .blue color to Material Design's 'Blue 500' color
+      },
+      'spacing': {
+        type: Number,
+        default: 4
       },
       'text': {
         type: String,
@@ -59,6 +63,21 @@
 
         return isNumber(this.size) ? this.size : 32
       },
+      text_margin_top() {
+        switch (this.size)
+        {
+          case 'tiny':
+          case 'small':
+          case 'medium':
+          case 'large':
+          case 'big':
+          case 'huge':
+          case 'massive':
+            return Math.min(Math.max(Math.ceil(this.size_px/8), 3), 12)
+        }
+
+        return isNumber(this.spacing) ? this.spacing : 4
+      },
       text_font_size() {
         switch (this.size)
         {
@@ -69,7 +88,7 @@
           case 'big':
           case 'huge':
           case 'massive':
-            return Math.min(Math.max(Math.ceil(this.size_px*0.4), 11), 32)
+            return Math.min(Math.max(Math.ceil(this.size_px*1.4), 11), 32)
         }
 
         return isNumber(this.fontSize) ? this.fontSize : 13
@@ -88,6 +107,7 @@
       },
       text_style() {
         return {
+          'margin-top': this.text_margin_top+'px',
           'color': this.textFgColor,
           'font-size': this.text_font_size+'px',
           'text-align': 'center'
