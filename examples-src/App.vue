@@ -19,11 +19,11 @@
           </a>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Basic progress bar</div>
-            <progress-bar pct="50"></progress-bar>
+            <progress-bar :val="50"></progress-bar>
           </div>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Basic progress bar with text</div>
-            <progress-bar pct="50" text="50%"></progress-bar>
+            <progress-bar :val="50" text="50%"></progress-bar>
           </div>
         </div>
 
@@ -34,31 +34,31 @@
           </a>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Tiny progress bar</div>
-            <progress-bar size="tiny" pct="10" text="10%"></progress-bar>
+            <progress-bar size="tiny" :val="10" text="10%"></progress-bar>
           </div>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Small progress bar</div>
-            <progress-bar size="small" pct="20" text="20%"></progress-bar>
+            <progress-bar size="small" :val="20" text="20%"></progress-bar>
           </div>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Medium progress bar</div>
-            <progress-bar size="medium" pct="40" text="40%"></progress-bar>
+            <progress-bar size="medium" :val="40" text="40%"></progress-bar>
           </div>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Large progress bar</div>
-            <progress-bar size="large" pct="60" text="60%"></progress-bar>
+            <progress-bar size="large" :val="60" text="60%"></progress-bar>
           </div>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Big progress bar</div>
-            <progress-bar size="big" pct="80" text="80%"></progress-bar>
+            <progress-bar size="big" :val="80" text="80%"></progress-bar>
           </div>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Huge progress bar</div>
-            <progress-bar size="huge" pct="90" text="90%"></progress-bar>
+            <progress-bar size="huge" :val="90" text="90%"></progress-bar>
           </div>
           <div :class="box_cls" :style="box_style">
             <div :class="label_cls">Massive progress bar</div>
-            <progress-bar size="massive" pct="100" text="100%"></progress-bar>
+            <progress-bar size="massive" :val="100" text="100%"></progress-bar>
           </div>
         </div>
 

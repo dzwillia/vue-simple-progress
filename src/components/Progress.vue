@@ -15,8 +15,11 @@
   export default {
     name: 'vue-simple-progress',
     props: {
-      'pct': {
+      'val': {
         default: 0
+      },
+      'max': {
+        default: 100
       },
       'size': {
         // either a number (pixel width/height) or 'tiny', 'small',
@@ -49,6 +52,11 @@
       }
     },
     computed: {
+      pct() {
+        var pct = this.val/this.max*100
+        pct = pct.toFixed(2)
+        return Math.min(pct, this.max)
+      },
       size_px() {
         switch (this.size)
         {
