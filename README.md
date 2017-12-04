@@ -12,7 +12,7 @@ vue-simple-progress is designed to be a lightweight [Vue.js](http://vuejs.org) p
 
 ## JsFiddle Demo
 
-[http://jsfiddle.net/dzwillia/kc5ka8zu](http://jsfiddle.net/dzwillia/kc5ka8zu)
+[http://jsfiddle.net/dzwillia/47pvcjs9](http://jsfiddle.net/dzwillia/47pvcjs9)
 
 ## Requirements
 * [Vue.js](http://vuejs.org/) (^v2.1.4)
