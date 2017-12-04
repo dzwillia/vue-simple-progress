@@ -62,6 +62,26 @@
           </div>
         </div>
 
+
+        <div class="pt5 nb5" id="standard-sizes">
+          <a href="#standard-sizes" :class="header_cls">
+            <h2 class="ma0 pb2 f2 fw4 lh-1">Real-time updating</h2>
+            <p class="ma0 lh-copy f6">Updating the progress bar is as simple as change the `val` prop.</p>
+          </a>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Increasing percent (stops at 100%): {{increasing_pct}}%<strong></strong></div>
+            <progress-bar size="tiny" :val="increasing_pct" :text="increasing_pct + '%'"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Decreasing percent (stops at 0%): {{decreasing_pct}}%<strong></strong></div>
+            <progress-bar size="tiny" :val="decreasing_pct" :text="decreasing_pct + '%'"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Random percent: {{random_pct}}%<strong></strong></div>
+            <progress-bar size="tiny" :val="random_pct" :text="random_pct + '%'"></progress-bar>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -77,6 +97,10 @@
     },
     data() {
       return {
+        random_pct: 0,
+        increasing_pct: 0,
+        decreasing_pct: 100,
+        is_paused: false
       }
     },
     computed: {
@@ -98,6 +122,16 @@
       cell_cls() {
         return 'ph1 pv1 ba b--moon-gray'
       }
+    },
+    mounted() {
+      setInterval(() => {
+        if (this.is_paused)
+          return
+
+        this.random_pct = Math.ceil(Math.random() * 100)
+        this.increasing_pct = Math.min(this.increasing_pct + 5, 100)
+        this.decreasing_pct = Math.max(this.decreasing_pct - 5, 0)
+      }, 2000)
     }
   }
 </script>

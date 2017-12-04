@@ -34,6 +34,10 @@
         type: String,
         default: '#2196f3' // match .blue color to Material Design's 'Blue 500' color
       },
+      'bar-transition': {
+        type: String,
+        default: 'all 0.5s ease'
+      },
       'spacing': {
         type: Number,
         default: 4
@@ -110,7 +114,8 @@
         return {
           'background': this.barColor,
           'width': this.pct+'%',
-          'height': this.size_px+'px'
+          'height': this.size_px+'px',
+          'transition': this.barTransition
         }
       },
       text_style() {
@@ -124,9 +129,3 @@
     }
   }
 </script>
-
-<style>
-  .vue-simple-progress-bar {
-    transition: all 0.15s linear;
-  }
-</style>
