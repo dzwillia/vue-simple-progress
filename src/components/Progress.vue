@@ -1,9 +1,10 @@
 <template>
   <div>
+    <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0 && textPosition == 'top'">{{text}}</div>
     <div class="vue-simple-progress" :style="progress_style">
       <div class="vue-simple-progress-bar" :style="bar_style"></div>
     </div>
-    <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0">{{text}}</div>
+    <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0 && textPosition == 'bottom'">{{text}}</div>
   </div>
 </template>
 
@@ -13,7 +14,6 @@
   }
 
   export default {
-    name: 'vue-simple-progress',
     props: {
       'val': {
         default: 0
@@ -46,6 +46,10 @@
         type: String,
         default: ''
       },
+      'text-position': {
+        type: String,
+        default: 'bottom', // 'bottom', 'top', 'inside'
+      },
       'font-size': {
         type: Number,
         default: 13
@@ -75,7 +79,7 @@
 
         return isNumber(this.size) ? this.size : 32
       },
-      text_margin_top() {
+      text_margin() {
         switch (this.size)
         {
           case 'tiny':
@@ -119,12 +123,18 @@
         }
       },
       text_style() {
-        return {
-          'margin-top': this.text_margin_top+'px',
+        var style = {
           'color': this.textFgColor,
           'font-size': this.text_font_size+'px',
           'text-align': 'center'
         }
+
+        if (this.textPosition == 'top')
+          style['margin-bottom'] = this.text_margin+'px'
+        if (this.textPosition == 'bottom')
+          style['margin-top'] = this.text_margin+'px'
+
+        return style
       }
     }
   }

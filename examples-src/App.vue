@@ -25,6 +25,10 @@
             <div :class="label_cls">Basic progress bar with text</div>
             <progress-bar :val="50" text="50%"></progress-bar>
           </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Basic progress bar with text on top</div>
+            <progress-bar :val="50" text="50%" text-position="top"></progress-bar>
+          </div>
         </div>
 
         <div class="pt5 nb5" id="standard-sizes">
@@ -111,7 +115,7 @@
         return 'db mt5 pb3 dark-gray hover-blue lh-1 no-underline'
       },
       box_cls() {
-        return 'db pt3 pb5 ph3 ph0-l bt b--black-10 relative'
+        return 'db pt3 pb4 ph3 ph0-l relative'
       },
       box_style() {
         return 'min-height: 100px'
