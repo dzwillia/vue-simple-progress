@@ -1,6 +1,6 @@
 /*!
- * vue-simple-progress v1.0.1 (https://github.com/dzwillia/vue-simple-progress)
- * (c) 2017 David Z. Williams
+ * vue-simple-progress v1.0.3 (https://github.com/dzwillia/vue-simple-progress)
+ * (c) 2018 David Z. Williams
  * Released under the MIT License.
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -195,7 +195,6 @@ var isNumber = function isNumber(n) {
 };
 
 exports.default = {
-  name: 'vue-simple-progress',
   props: {
     'val': {
       default: 0
@@ -225,6 +224,9 @@ exports.default = {
       type: String,
       default: ''
     },
+    'text-position': {
+      type: String,
+      default: 'bottom' },
     'font-size': {
       type: Number,
       default: 13
@@ -260,7 +262,7 @@ exports.default = {
 
       return isNumber(this.size) ? this.size : 32;
     },
-    text_margin_top: function text_margin_top() {
+    text_margin: function text_margin() {
       switch (this.size) {
         case 'tiny':
         case 'small':
@@ -302,12 +304,16 @@ exports.default = {
       };
     },
     text_style: function text_style() {
-      return {
-        'margin-top': this.text_margin_top + 'px',
+      var style = {
         'color': this.textFgColor,
         'font-size': this.text_font_size + 'px',
         'text-align': 'center'
       };
+
+      if (this.textPosition == 'top') style['margin-bottom'] = this.text_margin + 'px';
+      if (this.textPosition == 'bottom') style['margin-top'] = this.text_margin + 'px';
+
+      return style;
     }
   }
 };
@@ -317,13 +323,16 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', [(_vm.text.length > 0 && _vm.textPosition == 'top') ? _c('div', {
+    staticClass: "vue-simple-progress-text",
+    style: (_vm.text_style)
+  }, [_vm._v(_vm._s(_vm.text))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "vue-simple-progress",
     style: (_vm.progress_style)
   }, [_c('div', {
     staticClass: "vue-simple-progress-bar",
     style: (_vm.bar_style)
-  })]), _vm._v(" "), (_vm.text.length > 0) ? _c('div', {
+  })]), _vm._v(" "), (_vm.text.length > 0 && _vm.textPosition == 'bottom') ? _c('div', {
     staticClass: "vue-simple-progress-text",
     style: (_vm.text_style)
   }, [_vm._v(_vm._s(_vm.text))]) : _vm._e()])
