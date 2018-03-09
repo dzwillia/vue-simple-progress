@@ -1,5 +1,5 @@
 /*!
- * vue-simple-progress v1.0.3 (https://github.com/dzwillia/vue-simple-progress)
+ * vue-simple-progress v1.1.0 (https://github.com/dzwillia/vue-simple-progress)
  * (c) 2018 David Z. Williams
  * Released under the MIT License.
  */
@@ -262,7 +262,7 @@ exports.default = {
 
       return isNumber(this.size) ? this.size : 32;
     },
-    text_margin: function text_margin() {
+    text_padding: function text_padding() {
       switch (this.size) {
         case 'tiny':
         case 'small':
@@ -291,17 +291,34 @@ exports.default = {
       return isNumber(this.fontSize) ? this.fontSize : 13;
     },
     progress_style: function progress_style() {
-      return {
+      var style = {
         'background': this.bgColor
       };
+
+      if (this.textPosition == 'middle' || this.textPosition == 'inside') {
+        style['position'] = 'relative';
+        style['min-height'] = this.size_px + 'px';
+        style['z-index'] = '-2';
+      }
+
+      return style;
     },
     bar_style: function bar_style() {
-      return {
+      var style = {
         'background': this.barColor,
         'width': this.pct + '%',
         'height': this.size_px + 'px',
         'transition': this.barTransition
       };
+
+      if (this.textPosition == 'middle' || this.textPosition == 'inside') {
+        style['position'] = 'absolute';
+        style['top'] = '0';
+        style['height'] = '100%';
+        style['min-height'] = this.size_px + 'px', style['z-index'] = '-1';
+      }
+
+      return style;
     },
     text_style: function text_style() {
       var style = {
@@ -310,8 +327,8 @@ exports.default = {
         'text-align': 'center'
       };
 
-      if (this.textPosition == 'top') style['margin-bottom'] = this.text_margin + 'px';
-      if (this.textPosition == 'bottom') style['margin-top'] = this.text_margin + 'px';
+      if (this.textPosition == 'top' || this.textPosition == 'middle' || this.textPosition == 'inside') style['padding-bottom'] = this.text_padding + 'px';
+      if (this.textPosition == 'bottom' || this.textPosition == 'middle' || this.textPosition == 'inside') style['padding-top'] = this.text_padding + 'px';
 
       return style;
     }
@@ -329,10 +346,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(_vm._s(_vm.text))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "vue-simple-progress",
     style: (_vm.progress_style)
-  }, [_c('div', {
+  }, [(_vm.text.length > 0 && _vm.textPosition == 'middle') ? _c('div', {
+    staticClass: "vue-simple-progress-text",
+    style: (_vm.text_style)
+  }, [_vm._v(_vm._s(_vm.text))]) : _vm._e(), _vm._v(" "), (_vm.text.length > 0 && _vm.textPosition == 'inside') ? _c('div', {
+    staticStyle: {
+      "position": "relative",
+      "left": "-9999px"
+    },
+    style: (_vm.text_style)
+  }, [_vm._v(_vm._s(_vm.text))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "vue-simple-progress-bar",
     style: (_vm.bar_style)
-  })]), _vm._v(" "), (_vm.text.length > 0 && _vm.textPosition == 'bottom') ? _c('div', {
+  }, [(_vm.text.length > 0 && _vm.textPosition == 'inside') ? _c('div', {
+    style: (_vm.text_style)
+  }, [_vm._v(_vm._s(_vm.text))]) : _vm._e()])]), _vm._v(" "), (_vm.text.length > 0 && _vm.textPosition == 'bottom') ? _c('div', {
     staticClass: "vue-simple-progress-text",
     style: (_vm.text_style)
   }, [_vm._v(_vm._s(_vm.text))]) : _vm._e()])
