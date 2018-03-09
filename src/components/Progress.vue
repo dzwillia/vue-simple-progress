@@ -112,12 +112,15 @@
       },
       progress_style() {
         var style = {
-          'background': this.bgColor,
-          'position': 'relative'
+          'background': this.bgColor
         }
 
         if (this.textPosition == 'middle')
+        {
+          style['position'] = 'relative'
           style['min-height'] = this.size_px+'px'
+          style['z-index'] = '-2'
+        }
 
         return style
       },
@@ -134,7 +137,8 @@
           style['position'] = 'absolute'
           style['top'] = '0'
           style['height'] = '100%'
-          style['min-height'] = this.size_px+'px'
+          style['min-height'] = this.size_px+'px',
+          style['z-index'] = '-1'
         }
 
         return style
@@ -143,9 +147,7 @@
         var style = {
           'color': this.textFgColor,
           'font-size': this.text_font_size+'px',
-          'text-align': 'center',
-          'position': 'relative',
-          'z-index': '1'
+          'text-align': 'center'
         }
 
         if (this.textPosition == 'top' || this.textPosition == 'middle')
