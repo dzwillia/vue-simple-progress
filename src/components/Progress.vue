@@ -3,7 +3,10 @@
     <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0 && textPosition == 'top'">{{text}}</div>
     <div class="vue-simple-progress" :style="progress_style">
       <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0 && textPosition == 'middle'">{{text}}</div>
-      <div class="vue-simple-progress-bar" :style="bar_style"></div>
+      <div style="position: relative; left: -9999px" :style="text_style" v-if="text.length > 0 && textPosition == 'inside'">{{text}}</div>
+      <div class="vue-simple-progress-bar" :style="bar_style">
+        <div :style="text_style" v-if="text.length > 0 && textPosition == 'inside'">{{text}}</div>
+      </div>
     </div>
     <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0 && textPosition == 'bottom'">{{text}}</div>
   </div>
@@ -49,7 +52,7 @@
       },
       'text-position': {
         type: String,
-        default: 'bottom', // 'bottom', 'top', 'middle'
+        default: 'bottom', // 'bottom', 'top', 'middle', 'inside'
       },
       'font-size': {
         type: Number,
@@ -115,7 +118,7 @@
           'background': this.bgColor
         }
 
-        if (this.textPosition == 'middle')
+        if (this.textPosition == 'middle' || this.textPosition == 'inside')
         {
           style['position'] = 'relative'
           style['min-height'] = this.size_px+'px'
@@ -132,7 +135,7 @@
           'transition': this.barTransition
         }
 
-        if (this.textPosition == 'middle')
+        if (this.textPosition == 'middle' || this.textPosition == 'inside')
         {
           style['position'] = 'absolute'
           style['top'] = '0'
@@ -150,9 +153,9 @@
           'text-align': 'center'
         }
 
-        if (this.textPosition == 'top' || this.textPosition == 'middle')
+        if (this.textPosition == 'top' || this.textPosition == 'middle' || this.textPosition == 'inside')
           style['padding-bottom'] = this.text_padding+'px'
-        if (this.textPosition == 'bottom' || this.textPosition == 'middle')
+        if (this.textPosition == 'bottom' || this.textPosition == 'middle' || this.textPosition == 'inside')
           style['padding-top'] = this.text_padding+'px'
 
         return style
