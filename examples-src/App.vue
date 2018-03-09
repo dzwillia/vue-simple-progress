@@ -25,9 +25,24 @@
             <div :class="label_cls">Basic progress bar with text</div>
             <progress-bar :val="50" text="50%"></progress-bar>
           </div>
+        </div>
+
+        <div class="pt5 nb5" id="standard-sizes">
+          <a href="#standard-sizes" :class="header_cls">
+            <h2 class="ma0 pb2 f2 fw4 lh-1">Text Position</h2>
+            <p class="ma0 lh-copy f6">Progress bars can have a label above, inside or below the bar.</p>
+          </a>
           <div :class="box_cls" :style="box_style">
-            <div :class="label_cls">Basic progress bar with text on top</div>
+            <div :class="label_cls">Text on top</div>
             <progress-bar :val="50" text="50%" text-position="top"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Text inside</div>
+            <progress-bar :val="50" text="50%" text-position="middle"></progress-bar>
+          </div>
+          <div :class="box_cls" :style="box_style">
+            <div :class="label_cls">Text on bottom</div>
+            <progress-bar :val="50" text="50%" text-position="bottom"></progress-bar>
           </div>
         </div>
 
@@ -133,8 +148,8 @@
           return
 
         this.random_pct = Math.ceil(Math.random() * 100)
-        this.increasing_pct = Math.min(this.increasing_pct + 5, 100)
-        this.decreasing_pct = Math.max(this.decreasing_pct - 5, 0)
+        this.increasing_pct = Math.min(this.increasing_pct + 2, 100)
+        this.decreasing_pct = Math.max(this.decreasing_pct - 2, 0)
       }, 2000)
     }
   }

@@ -2,6 +2,7 @@
   <div>
     <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0 && textPosition == 'top'">{{text}}</div>
     <div class="vue-simple-progress" :style="progress_style">
+      <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0 && textPosition == 'middle'">{{text}}</div>
       <div class="vue-simple-progress-bar" :style="bar_style"></div>
     </div>
     <div class="vue-simple-progress-text" :style="text_style" v-if="text.length > 0 && textPosition == 'bottom'">{{text}}</div>
@@ -48,7 +49,7 @@
       },
       'text-position': {
         type: String,
-        default: 'bottom', // 'bottom', 'top', 'inside'
+        default: 'bottom', // 'bottom', 'top', 'middle'
       },
       'font-size': {
         type: Number,
@@ -79,7 +80,7 @@
 
         return isNumber(this.size) ? this.size : 32
       },
-      text_margin() {
+      text_padding() {
         switch (this.size)
         {
           case 'tiny':
@@ -110,29 +111,47 @@
         return isNumber(this.fontSize) ? this.fontSize : 13
       },
       progress_style() {
-        return {
-          'background': this.bgColor
+        var style = {
+          'background': this.bgColor,
+          'position': 'relative'
         }
+
+        if (this.textPosition == 'middle')
+          style['min-height'] = this.size_px+'px'
+
+        return style
       },
       bar_style() {
-        return {
+        var style = {
           'background': this.barColor,
           'width': this.pct+'%',
           'height': this.size_px+'px',
           'transition': this.barTransition
         }
+
+        if (this.textPosition == 'middle')
+        {
+          style['position'] = 'absolute'
+          style['top'] = '0'
+          style['height'] = '100%'
+          style['min-height'] = this.size_px+'px'
+        }
+
+        return style
       },
       text_style() {
         var style = {
           'color': this.textFgColor,
           'font-size': this.text_font_size+'px',
-          'text-align': 'center'
+          'text-align': 'center',
+          'position': 'relative',
+          'z-index': '1'
         }
 
-        if (this.textPosition == 'top')
-          style['margin-bottom'] = this.text_margin+'px'
-        if (this.textPosition == 'bottom')
-          style['margin-top'] = this.text_margin+'px'
+        if (this.textPosition == 'top' || this.textPosition == 'middle')
+          style['padding-bottom'] = this.text_padding+'px'
+        if (this.textPosition == 'bottom' || this.textPosition == 'middle')
+          style['padding-top'] = this.text_padding+'px'
 
         return style
       }
