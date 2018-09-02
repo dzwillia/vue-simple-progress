@@ -98,19 +98,19 @@ Example:
 [More live code examples on JSFiddle](http://jsfiddle.net/dzwillia/47pvcjs9)
 
 ## Options
-| Props          | Type             | Values                                   | Default |
-| -------------- |:----------------:|:----------------------------------------:| :-----: |
-| val            | Number           | 0 - max                                  | 0       |
-| max            | Number           | Any number                               | 100     |
-| size           | Number \| String | tiny,small,medium,large,huge,massive,{n} | 3       |
-| bg-color       | String           | Color                                    | #eee    |
-| bar-color      | String           | Color                                    | #2196f3 |
-| bar-transition | String           | CSS transition                     | all 0.5s ease |
-| spacing        | Number           | Any Number                               | 4       |
-| text           | String           | Text to display                          |   ""    |
-| text-position  | String           | bottom, top, middle, inside              | bottom  |
-| font-size      | Number           | Any Number                               | 13      |
-| text-fg-color  | String           | Color                                    | #222    |
+| Props          | Type             | Values                                         | Default          |
+| -------------- |:-----------------|:-----------------------------------------------|:-----------------|
+| val            | Number           | 0 - max                                        | 0                |
+| max            | Number           | Any number                                     | 100              |
+| size           | Number \| String | tiny, small, medium, large, huge, massive, {n} | 3                |
+| bg-color       | String           | Color                                          | #eee             |
+| bar-color      | String           | Color                                          | #2196f3          |
+| bar-transition | String           | CSS transition                                 | all 0.5s ease    |
+| spacing        | Number           | Any Number                                     | 4                |
+| text           | String           | Text to display                                | _(empty string)_ |
+| text-position  | String           | bottom, top, middle, inside                    | bottom           |
+| font-size      | Number           | Any Number                                     | 13               |
+| text-fg-color  | String           | Color                                          | #222             |
 
 ## License
 vue-simple-progress is open source and released under the [MIT License](LICENSE).
