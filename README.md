@@ -85,7 +85,7 @@ Example:
 <progress-bar size="medium" val="60" text="60">
 ```
 
-### Custom Bar color
+### Custom bar color
 ```
 <progress-bar bar-color="#dc720f" val="60" text="60%">
 ```
@@ -98,6 +98,7 @@ Example:
 [More live code examples on JSFiddle](http://jsfiddle.net/dzwillia/47pvcjs9)
 
 ## Options
+
 | Props          | Type             | Values                                         | Default          |
 | -------------- |:-----------------|:-----------------------------------------------|:-----------------|
 | val            | Number           | 0 - max                                        | 0                |
