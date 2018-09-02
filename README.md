@@ -3,9 +3,27 @@
 
 vue-simple-progress is designed to be a lightweight [Vue.js](http://vuejs.org) progress bar requiring minimal configuration.
 
+## Documentation
+
+[https://github.com/dzwillia/vue-simple-progress](https://github.com/dzwillia/vue-simple-progress) (this page)
+
 ## Demo
 
 [https://dzwillia.github.io/vue-simple-progress/examples](https://dzwillia.github.io/vue-simple-progress/examples)
+
+## Requirements
+* [Vue.js](http://vuejs.org/) (^v2.1.4)
+
+## Browser support
+IE 10+ (due to [CSS animation support](https://caniuse.com/#feat=css-animation)).
+
+## Installation
+
+### NPM
+
+```bash
+npm install vue-simple-progress --save
+```
 
 ## Usage
 > All styling for this component is done via computed styles in the `Progress.vue` component and requires no external CSS files.
@@ -93,20 +111,6 @@ Example:
 | text-position  | String           | bottom, top, middle, inside              | bottom  |
 | font-size      | Number           | Any Number                               | 13      |
 | text-fg-color  | String           | Color                                    | #222    |
-
-## Requirements
-* [Vue.js](http://vuejs.org/) (^v2.1.4)
-
-## Browser support
-IE 10+ (due to [CSS animation support](https://caniuse.com/#feat=css-animation)).
-
-## Installation
-
-### NPM
-
-```bash
-npm install vue-simple-progress --save
-```
 
 ## License
 vue-simple-progress is open source and released under the [MIT License](LICENSE).
