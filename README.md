@@ -3,30 +3,9 @@
 
 vue-simple-progress is designed to be a lightweight [Vue.js](http://vuejs.org) progress bar requiring minimal configuration.
 
-## Documentation
-[https://github.com/dzwillia/vue-simple-progress/](https://github.com/dzwillia/vue-simple-progress/)
-
 ## Demo
 
 [https://dzwillia.github.io/vue-simple-progress/examples](https://dzwillia.github.io/vue-simple-progress/examples)
-
-## JsFiddle Demo
-
-[http://jsfiddle.net/dzwillia/47pvcjs9](http://jsfiddle.net/dzwillia/47pvcjs9)
-
-## Requirements
-* [Vue.js](http://vuejs.org/) (^v2.1.4)
-
-## Browser support
-IE 10+ (due to [CSS animation support](https://caniuse.com/#feat=css-animation)).
-
-## Installation
-
-### NPM
-
-```bash
-npm install vue-simple-progress --save
-```
 
 ## Usage
 > All styling for this component is done via computed styles in the `Progress.vue` component and requires no external CSS files.
@@ -44,6 +23,14 @@ new Vue({
     ProgressBar
   }
 })
+```
+
+in markup:
+
+```html
+<div id="app">
+  <progress-bar></progress-bar>
+</div>
 ```
 
 ### Globals (script tag)
@@ -71,6 +58,54 @@ Example:
   </script>
 </body>
 </html>
+```
+
+## Examples
+
+### Medium size
+```
+<progress-bar size="medium" val="60" text="60">
+```
+
+### Custom Bar color
+```
+<progress-bar bar-color="#dc720f" val="60" text="60%">
+```
+
+### Optional title for accessibility
+```
+<progress-bar bar-color="#dc720f" val="60" text="60%" title="60%">
+```
+
+[More live code examples on JSFiddle](http://jsfiddle.net/dzwillia/47pvcjs9)
+
+## Options
+| Props          | Type             | Values                                   | Default |
+| -------------- |:----------------:|:----------------------------------------:| :-----: |
+| val            | Number           | 0 - max                                  | 0       |
+| max            | Number           | Any number                               | 100     |
+| size           | Number \| String | tiny,small,medium,large,huge,massive,{n} | 3       |
+| bg-color       | String           | Color                                    | #eee    |
+| bar-color      | String           | Color                                    | #2196f3 |
+| bar-transition | String           | CSS transition                     | all 0.5s ease |
+| spacing        | Number           | Any Number                               | 4       |
+| text           | String           | Text to display                          |   ""    |
+| text-position  | String           | bottom, top, middle, inside              | bottom  |
+| font-size      | Number           | Any Number                               | 13      |
+| text-fg-color  | String           | Color                                    | #222    |
+
+## Requirements
+* [Vue.js](http://vuejs.org/) (^v2.1.4)
+
+## Browser support
+IE 10+ (due to [CSS animation support](https://caniuse.com/#feat=css-animation)).
+
+## Installation
+
+### NPM
+
+```bash
+npm install vue-simple-progress --save
 ```
 
 ## License
