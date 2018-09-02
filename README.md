@@ -5,7 +5,7 @@ vue-simple-progress is designed to be a lightweight [Vue.js](http://vuejs.org) p
 
 ## Documentation
 
-[https://github.com/dzwillia/vue-simple-progress](https://github.com/dzwillia/vue-simple-progress) (this page)
+[https://github.com/dzwillia/vue-simple-progress](https://github.com/dzwillia/vue-simple-progress)
 
 ## Demo
 
