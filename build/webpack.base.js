@@ -2,6 +2,7 @@
 
 const options = require('./options')
 const autoprefixer = require('autoprefixer')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   resolve: {
@@ -41,7 +42,9 @@ module.exports = {
       }
     ]
   },
-
+  plugins: [
+    new VueLoaderPlugin(),
+  ],
   // Stats is used to customize Webpack's console output
   // https://webpack.js.org/configuration/stats/
   stats: {

@@ -5,6 +5,7 @@ const webpack = require('webpack')
 
 const options = require('./options')
 const base = require('./webpack.base.js')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 const config = merge(base, {
   entry: options.paths.resolve('src/index.js'),
@@ -16,7 +17,20 @@ const config = merge(base, {
     libraryExport: 'default',
     libraryTarget: 'umd'
   },
-
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        sourceMap: true,
+        parallel: 4,
+        uglifyOptions: {
+          warnings: false,
+          compress: {
+            warnings: false
+          },
+        },
+      }),
+    ]
+  },
   plugins: [
     new webpack.BannerPlugin({
       banner: options.banner,
@@ -41,15 +55,10 @@ if (options.isProduction) {
   config.plugins = config.plugins.concat([
     // Set the production environment
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-
-    // Minify with dead-code elimination
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
+      'process.env': {
+        NODE_ENV: '"production"'
       }
-    })
+    }),
   ])
 }
 

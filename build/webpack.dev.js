@@ -19,7 +19,9 @@ const config = merge(base, {
 
   plugins: [
     new webpack.DefinePlugin({
-      VERSION: JSON.stringify(options.version)
+      'process.env': {
+        VERSION: options.version
+      },
     })
   ],
 
@@ -35,5 +37,10 @@ const config = merge(base, {
 config.module.rules[0].options.loaders = {
   scss: 'vue-style-loader!css-loader!sass-loader'
 }
+
+config.module.rules.push({
+  test: /\.css$/,
+  use: ['vue-style-loader', 'css-loader']
+})
 
 module.exports = config

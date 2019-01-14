@@ -1,12 +1,14 @@
 {
   "presets": [
-    ["es2015", "stage-2"]
+    ["@babel/env", {
+      "modules": false
+    }]
   ],
   "plugins": [
     "transform-es2015-destructuring",
     "transform-es2015-parameters",
     "transform-object-rest-spread",
-    "transform-runtime"
+    "@babel/transform-runtime"
   ],
   "comments": false
 }
