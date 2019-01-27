@@ -42,6 +42,10 @@
         type: String,
         default: 'all 0.5s ease'
       },
+      'bar-border-radius': {
+        type: Number,
+        default: 0
+      },
       'spacing': {
         type: Number,
         default: 4
@@ -129,6 +133,11 @@
           style['z-index'] = '-2'
         }
 
+        if (this.barBorderRadius > 0)
+        {
+          style['border-radius'] = this.barBorderRadius+'px';
+        }
+
         return style
       },
       bar_style() {
@@ -137,6 +146,11 @@
           'width': this.pct+'%',
           'height': this.size_px+'px',
           'transition': this.barTransition
+        }
+
+        if (this.barBorderRadius > 0)
+        {
+          style['border-radius'] = this.barBorderRadius+'px';
         }
 
         if (this.textPosition == 'middle' || this.textPosition == 'inside')
