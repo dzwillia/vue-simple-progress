@@ -109,6 +109,7 @@ Example:
 | bar-transition | String           | CSS transition                                 | all 0.5s ease    |
 | spacing        | Number           | Any Number                                     | 4                |
 | text           | String           | Text to display                                | _(empty string)_ |
+| text-align     | String           | left, right, center                            | center           |
 | text-position  | String           | bottom, top, middle, inside                    | bottom           |
 | font-size      | Number           | Any Number                                     | 13               |
 | text-fg-color  | String           | Color                                          | #222             |
