@@ -50,6 +50,10 @@
         type: String,
         default: ''
       },
+      'text-align': {
+        type: String,
+        default: 'center', // 'left', 'right'
+      },
       'text-position': {
         type: String,
         default: 'bottom', // 'bottom', 'top', 'middle', 'inside'
@@ -150,7 +154,7 @@
         var style = {
           'color': this.textFgColor,
           'font-size': this.text_font_size+'px',
-          'text-align': 'center'
+          'text-align': this.textAlign,
         }
 
         if (this.textPosition == 'top' || this.textPosition == 'middle' || this.textPosition == 'inside')
