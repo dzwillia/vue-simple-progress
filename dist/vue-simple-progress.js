@@ -1,5 +1,5 @@
 /*!
- * vue-simple-progress v1.1.0 (https://github.com/dzwillia/vue-simple-progress)
+ * vue-simple-progress v1.1.1 (https://github.com/dzwillia/vue-simple-progress)
  * (c) 2019 David Z. Williams
  * Released under the MIT License.
  */
@@ -12,7 +12,7 @@
 		exports["VueSimpleProgress"] = factory();
 	else
 		root["VueSimpleProgress"] = factory();
-})(typeof self !== 'undefined' ? self : this, function() {
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
