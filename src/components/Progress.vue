@@ -42,6 +42,10 @@
         type: String,
         default: 'all 0.5s ease'
       },
+      'bar-border-radius': {
+        type: Number,
+        default: 0
+      },
       'spacing': {
         type: Number,
         default: 4
@@ -49,6 +53,10 @@
       'text': {
         type: String,
         default: ''
+      },
+      'text-align': {
+        type: String,
+        default: 'center', // 'left', 'right'
       },
       'text-position': {
         type: String,
@@ -125,6 +133,11 @@
           style['z-index'] = '-2'
         }
 
+        if (this.barBorderRadius > 0)
+        {
+          style['border-radius'] = this.barBorderRadius+'px';
+        }
+
         return style
       },
       bar_style() {
@@ -133,6 +146,11 @@
           'width': this.pct+'%',
           'height': this.size_px+'px',
           'transition': this.barTransition
+        }
+
+        if (this.barBorderRadius > 0)
+        {
+          style['border-radius'] = this.barBorderRadius+'px';
         }
 
         if (this.textPosition == 'middle' || this.textPosition == 'inside')
@@ -150,7 +168,7 @@
         var style = {
           'color': this.textFgColor,
           'font-size': this.text_font_size+'px',
-          'text-align': 'center'
+          'text-align': this.textAlign,
         }
 
         if (this.textPosition == 'top' || this.textPosition == 'middle' || this.textPosition == 'inside')

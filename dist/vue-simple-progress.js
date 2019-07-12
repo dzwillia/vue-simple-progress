@@ -1,6 +1,6 @@
 /*!
  * vue-simple-progress v1.1.0 (https://github.com/dzwillia/vue-simple-progress)
- * (c) 2018 David Z. Williams
+ * (c) 2019 David Z. Williams
  * Released under the MIT License.
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -12,7 +12,7 @@
 		exports["VueSimpleProgress"] = factory();
 	else
 		root["VueSimpleProgress"] = factory();
-})(this, function() {
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -216,6 +216,10 @@ exports.default = {
       type: String,
       default: 'all 0.5s ease'
     },
+    'bar-border-radius': {
+      type: Number,
+      default: 0
+    },
     'spacing': {
       type: Number,
       default: 4
@@ -224,6 +228,9 @@ exports.default = {
       type: String,
       default: ''
     },
+    'text-align': {
+      type: String,
+      default: 'center' },
     'text-position': {
       type: String,
       default: 'bottom' },
@@ -301,6 +308,10 @@ exports.default = {
         style['z-index'] = '-2';
       }
 
+      if (this.barBorderRadius > 0) {
+        style['border-radius'] = this.barBorderRadius + 'px';
+      }
+
       return style;
     },
     bar_style: function bar_style() {
@@ -310,6 +321,10 @@ exports.default = {
         'height': this.size_px + 'px',
         'transition': this.barTransition
       };
+
+      if (this.barBorderRadius > 0) {
+        style['border-radius'] = this.barBorderRadius + 'px';
+      }
 
       if (this.textPosition == 'middle' || this.textPosition == 'inside') {
         style['position'] = 'absolute';
@@ -324,7 +339,7 @@ exports.default = {
       var style = {
         'color': this.textFgColor,
         'font-size': this.text_font_size + 'px',
-        'text-align': 'center'
+        'text-align': this.textAlign
       };
 
       if (this.textPosition == 'top' || this.textPosition == 'middle' || this.textPosition == 'inside') style['padding-bottom'] = this.text_padding + 'px';
