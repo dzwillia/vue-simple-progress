@@ -78,48 +78,57 @@
         return Math.min(pct, this.max)
       },
       size_px() {
-        switch (this.size)
-        {
-          case 'tiny':    return 2
-          case 'small':   return 4
-          case 'medium':  return 8
-          case 'large':   return 12
-          case 'big':     return 16
-          case 'huge':    return 32
-          case 'massive': return 64
+        if(isNumber(this.size)){
+          return this.size
+        } else {
+          switch (this.size)
+          {
+            case 'tiny':    return 2
+            case 'small':   return 4
+            case 'medium':  return 8
+            case 'large':   return 12
+            case 'big':     return 16
+            case 'huge':    return 32
+            case 'massive': return 64
+            default: return 32
+          }
         }
-
-        return isNumber(this.size) ? this.size : 32
       },
       text_padding() {
-        switch (this.size)
-        {
-          case 'tiny':
-          case 'small':
-          case 'medium':
-          case 'large':
-          case 'big':
-          case 'huge':
-          case 'massive':
-            return Math.min(Math.max(Math.ceil(this.size_px/8), 3), 12)
+        if(isNumber(this.spacing)){
+          return this.spacing
+        } else {
+          switch (this.size)
+          {
+            case 'tiny':
+            case 'small':
+            case 'medium':
+            case 'large':
+            case 'big':
+            case 'huge':
+            case 'massive':
+              return Math.min(Math.max(Math.ceil(this.size_px/8), 3), 12)
+            default: return 4
+          }
         }
-
-        return isNumber(this.spacing) ? this.spacing : 4
       },
       text_font_size() {
-        switch (this.size)
-        {
-          case 'tiny':
-          case 'small':
-          case 'medium':
-          case 'large':
-          case 'big':
-          case 'huge':
-          case 'massive':
-            return Math.min(Math.max(Math.ceil(this.size_px*1.4), 11), 32)
+        if(isNumber(this.fontSize)){
+          return this.fontSize
+        } else {
+          switch (this.size)
+          {
+            case 'tiny':
+            case 'small':
+            case 'medium':
+            case 'large':
+            case 'big':
+            case 'huge':
+            case 'massive':
+              return Math.min(Math.max(Math.ceil(this.size_px*1.4), 11), 32)
+            default: return 13
+          }
         }
-
-        return isNumber(this.fontSize) ? this.fontSize : 13
       },
       progress_style() {
         var style = {
